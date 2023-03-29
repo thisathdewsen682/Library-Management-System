@@ -1,0 +1,181 @@
+-- MySQL dump 10.13  Distrib 5.7.28, for Win64 (x86_64)
+--
+-- Host: localhost    Database: lms
+-- ------------------------------------------------------
+-- Server version	5.5.5-10.4.10-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `lms`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `lms` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `lms`;
+
+--
+-- Table structure for table `account`
+--
+
+DROP TABLE IF EXISTS `account`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account` (
+  `Username` varchar(20) NOT NULL,
+  `Name` varchar(20) DEFAULT NULL,
+  `Password` int(11) DEFAULT NULL,
+  `Seq_Q` varchar(100) DEFAULT NULL,
+  `Answer` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`Username`),
+  UNIQUE KEY `Answer` (`Answer`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account`
+--
+
+LOCK TABLES `account` WRITE;
+/*!40000 ALTER TABLE `account` DISABLE KEYS */;
+INSERT INTO `account` VALUES ('admin','admin',12345678,'What is your school name','R');
+/*!40000 ALTER TABLE `account` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `book`
+--
+
+DROP TABLE IF EXISTS `book`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `book` (
+  `bid` int(20) NOT NULL,
+  `bname` varchar(50) DEFAULT NULL,
+  `author` varchar(50) DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  `page` varchar(255) DEFAULT NULL,
+  `categorie` varchar(255) DEFAULT NULL,
+  `date` varchar(100) DEFAULT NULL,
+  `rackno` text DEFAULT NULL,
+  `status` varchar(20) NOT NULL,
+  PRIMARY KEY (`bid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book`
+--
+
+LOCK TABLES `book` WRITE;
+/*!40000 ALTER TABLE `book` DISABLE KEYS */;
+/*!40000 ALTER TABLE `book` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `issue`
+--
+
+DROP TABLE IF EXISTS `issue`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `issue` (
+  `iid` int(20) NOT NULL,
+  `mid` varchar(255) NOT NULL,
+  `bid` varchar(255) NOT NULL,
+  `bname` varchar(100) NOT NULL,
+  `cat_no` varchar(255) NOT NULL,
+  `i_date` varchar(10) NOT NULL,
+  `r_date` varchar(100) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  PRIMARY KEY (`iid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `issue`
+--
+
+LOCK TABLES `issue` WRITE;
+/*!40000 ALTER TABLE `issue` DISABLE KEYS */;
+/*!40000 ALTER TABLE `issue` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `member`
+--
+
+DROP TABLE IF EXISTS `member`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `member` (
+  `mid` int(250) NOT NULL,
+  `fullname` varchar(50) DEFAULT NULL,
+  `initialname` varchar(50) DEFAULT NULL,
+  `dob` varchar(100) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `nic` varchar(20) DEFAULT NULL,
+  `phoneno` int(15) DEFAULT NULL,
+  `job` varchar(50) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`mid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `member`
+--
+
+LOCK TABLES `member` WRITE;
+/*!40000 ALTER TABLE `member` DISABLE KEYS */;
+/*!40000 ALTER TABLE `member` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `returndeatil`
+--
+
+DROP TABLE IF EXISTS `returndeatil`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `returndeatil` (
+  `rid` int(11) NOT NULL AUTO_INCREMENT,
+  `bid` varchar(25) DEFAULT NULL,
+  `bname` varchar(50) NOT NULL,
+  `mid` varchar(25) DEFAULT NULL,
+  `return_date` varchar(20) NOT NULL,
+  `late_days` varchar(20) DEFAULT NULL,
+  `fine` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`rid`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `returndeatil`
+--
+
+LOCK TABLES `returndeatil` WRITE;
+/*!40000 ALTER TABLE `returndeatil` DISABLE KEYS */;
+INSERT INTO `returndeatil` VALUES (11,'1','Hinsare','1','2022-07-19','0','0'),(12,'1','Hinsare','1','2022-07-19','0','0'),(13,'1','Hinsare','2','2022-07-19','0','0'),(14,'2','Harry Potter','1','2022-07-21','0','0'),(15,'2','Harry Potter','1','2022-07-27','0','0'),(16,'1','Hinsare','1','2022-07-29','14','1'),(17,'2','Harry Potter','4','2022-07-29','0','0'),(18,'3','Harry Potterd','3','2022-07-29','0','0'),(19,'1','Hinsare','1','2022-07-29','0','0'),(20,'2','Harry Potter','1','2022-07-29','0','0');
+/*!40000 ALTER TABLE `returndeatil` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-08-03 21:32:11
